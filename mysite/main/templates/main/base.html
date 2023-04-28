@@ -131,10 +131,10 @@
     <a href="{% url 'home' %}"><h1>Chat Website</h1></a>
     <div class="auth-buttons">
         {% if login_user %}
-            <a href="{% url 'logout' %}">{{ login_user }} Logout</a>
+            <a href="{% url 'home' %}">{{ login_user }} Logout</a>
         {% else %}
             <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}">Sign up</a>
+            <a href="{% url 'signup' %}">Sign up</a>
         {% endif %}
     </div>
   </header>
@@ -142,4 +142,3 @@
 <body>
     {% block content %}{% endblock %}
 </body>
-  

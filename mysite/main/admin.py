@@ -1,11 +1,4 @@
 from django.contrib import admin
-from .models import MyUser, ChatMessage
-# Register your models here.
+from .models import RecoveryMessage
 
-@admin.register(MyUser)
-class MyUserAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user_name']
-    list_display_links = ['id', 'user_name']
-    search_fields = ['user_name']
-
-admin.site.register(ChatMessage)
+admin.site.register(RecoveryMessage)
