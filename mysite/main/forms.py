@@ -1,17 +1,18 @@
 from django import forms
 from .models import RecoveryMessage
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class MessageForm(forms.ModelForm):
-    message = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Type your message here...'}))
-    
+    message = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Type your message here...'}))
+
     class Meta:
         model = RecoveryMessage
         fields = ['message']
 
 class SignupForm(UserCreationForm):
-    email = forms.EmailField(max_length=200)
+    email = forms.EmailField(required=True)
+
 
     class Meta:
         model = User
