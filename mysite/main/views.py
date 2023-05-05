@@ -5,8 +5,12 @@ from .forms import MessageForm, SignupForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-@login_required
+def welcome(request):
+    return render(request, 'main/welcome.html')
+
+@login_required(login_url='welcome')
 def home(request):
     if request.method == 'POST':
         form = MessageForm(request.POST)
@@ -40,7 +44,7 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('messages')
+                return redirect('home')
             else:
                 messages.error(request, 'Invalid username or password')
     else:

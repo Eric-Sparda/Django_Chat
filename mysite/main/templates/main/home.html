@@ -2,21 +2,6 @@
 
 {% block content %}
 <div class="container">
-  <header>
-    <h1>Chat Box</h1>
-    <div class="auth-buttons">
-      {% if user.is_authenticated %}
-        <p>Welcome, {{ user.username }}!</p>
-        <form action="{% url 'home' %}" method="post">
-          {% csrf_token %}
-          <button type="submit">Logout</button>
-        </form>
-      {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'signup' %}">Sign up</a>
-      {% endif %}
-    </div>
-  </header>
   <div class="chatbox">
     {% for message in recovery_messages %}
       <div class="message">
